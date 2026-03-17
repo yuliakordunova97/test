@@ -1,0 +1,89 @@
+@startuml
+class Person {
+        +String name
+        +String surname
+        +String makes
+        +String workExperiense
+        +Person(String name, String surname, String makes, String workExperiense)
+        +abstract double salaryCalculation()
+        +String getAbout()
+        +String whatDoing()
+        +String toString()
+    }
+
+    class Administrator {
+        +int zaweek
+        +int numberweek
+        +Administrator(String name, String surname, String makes, String workExperiense, int zaweek, int numberweek)
+        +double salaryCalculation()
+        +void performanceOfwork()
+        +void aboutExperience()
+    }
+
+    class Cook {
+        +int zahour
+        +int numberhours
+        +Cook(String name, String surname, String makes, String workExperiense, int zahour, int numberhours)
+        +double salaryCalculation()
+        +void performanceOfwork()
+        +void aboutExperience()
+    }
+
+    class Waiter {
+        +int zaday
+        +int numberdays
+        +Waiter(String name, String surname, String makes, String workExperiense, int zaday, int numberdays)
+        +double salaryCalculation()
+        +void performanceOfwork()
+        +void aboutExperience()
+    }
+
+    class Customer {
+        -String name
+        -List~Menu~ order
+        +Customer(String name)
+        +void addToOrder(Menu menuItem)
+        +List~Menu~ getOrder()
+        +String toString()
+    }
+
+    class Menu {
+        -String name
+        -double price
+        +Menu(String name, double price)
+        +void setname(String name) throws MenunameException
+        +void setprice(double price) throws MenuException
+    }
+
+    interface Aboutwork {
+        +void performanceOfwork()
+    }
+
+    interface Experience {
+        +void aboutExperience()
+    }
+
+    class MenuException {
+        +String getMessage()
+    }
+
+    class MenunameException {
+        +String getMessage()
+    }
+
+    Person <|-- Administrator
+    Person <|-- Cook
+    Person <|-- Waiter
+    Administrator ..|> Aboutwork
+    Administrator ..|> Experience
+    Cook ..|> Aboutwork
+    Cook ..|> Experience
+    Waiter ..|> Aboutwork
+    Waiter ..|> Experience
+    Customer "1" -- "*" Menu : order
+
+
+
+
+
+@enduml
